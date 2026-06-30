@@ -10,7 +10,6 @@ import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
  * @notice This contract is only for learning !!!
  */
 contract MyTokenTest is ERC20, Ownable {
-    error Invalid_Amount();
 
     uint256 private constant TOTALSUPPLY = 1000000e18;
     // 1ETH = 1000 TKT
@@ -29,7 +28,6 @@ contract MyTokenTest is ERC20, Ownable {
      * @param _amount amount of tokens to mint
      */
     function mintToken(address _to, uint256 _amount) external onlyOwner {
-        if (_amount == 0) revert Invalid_Amount();
         super._mint(_to, _amount);
     }
 
@@ -38,7 +36,6 @@ contract MyTokenTest is ERC20, Ownable {
      * @param _amount amount of tokens to burn
      */
     function burnToken(uint256 _amount) external {
-        if (_amount == 0) revert Invalid_Amount();
         super._burn(msg.sender, _amount);
     }
 }
