@@ -5,11 +5,9 @@ pragma solidity 0.8.30;
 import {Test,console2} from "forge-std/Test.sol";
 import {MyTokenTest} from "src/MyTokenTest.sol";
 import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
-import {ERC20Mock} from "openzeppelin-contracts/contracts/mocks/token/ERC20Mock.sol";
 
 contract MyTokenTKTTest is Test{
     MyTokenTest public myTokenTest;
-    ERC20Mock public erc20Mock;
 
     uint256 private constant TOTALSUPPLY = 1000;
 
@@ -19,7 +17,6 @@ contract MyTokenTKTTest is Test{
 
 
     function setUp()  public  {
-        erc20Mock = new ERC20Mock();
         myTokenTest = new MyTokenTest();
     }
 

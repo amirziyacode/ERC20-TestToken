@@ -16,6 +16,7 @@ contract ICO {
     address public owner;
 
     uint256 private constant RATE = 1000;
+    uint256 private constant PERESION = 1e18;
 
     constructor(address _token) {
         token = IERC20(_token);
@@ -34,9 +35,9 @@ contract ICO {
             revert Zero_amount_ETH_ICO();
         }
 
-        uint256 amount = msg.value * RATE * 1e18;
+        uint256 amount = msg.value * RATE * PERESION;
 
-        if (token.balanceOf(address(this)) >= amount) {
+        if (token.balanceOf(address(this)) <= amount) {
             revert Not_Enough_Token_ICO();
         }
 
